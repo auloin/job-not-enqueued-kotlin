@@ -8,11 +8,11 @@
         <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.nedap.issue</groupId>
+    <groupId>org.issue</groupId>
     <artifactId>JobNotEnqueuedKotlin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>NedapJobNotEnqueued</name>
-    <description>NedapJobNotEnqueued</description>
+    <name>JobNotEnqueuedKotlin</name>
+    <description>Reproduce Job Not Enqueued When Using Kotlin</description>
     <repositories>
         <repository>
             <id>JobRunrPro</id>
