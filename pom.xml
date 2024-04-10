@@ -22,7 +22,7 @@
     <properties>
         <java.version>17</java.version>
         <kotlin.version>1.9.23</kotlin.version>
-        <jobrunr.version>6.3.10</jobrunr.version>
+        <jobrunr.version>1.0.0-SNAPSHOT</jobrunr.version>
     </properties>
 
     <dependencies>
@@ -33,6 +33,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
@@ -60,6 +64,26 @@
         <dependency>
             <groupId>org.jobrunr</groupId>
             <artifactId>jobrunr-pro-spring-boot-3-starter</artifactId>
+            <version>${jobrunr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed-spring-boot-starter</artifactId>
+            <version>0.49.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed-core</artifactId>
+            <version>0.49.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.exposed</groupId>
+            <artifactId>exposed-jdbc</artifactId>
+            <version>0.49.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jobrunr</groupId>
+            <artifactId>jobrunr-pro-kotlin-exposed-support</artifactId>
             <version>${jobrunr.version}</version>
         </dependency>
     </dependencies>

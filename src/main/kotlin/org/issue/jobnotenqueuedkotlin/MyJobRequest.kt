@@ -1,11 +1,11 @@
 package org.issue.jobnotenqueuedkotlin
 
 import io.micrometer.core.annotation.Timed
+import org.jetbrains.exposed.sql.transactions.TransactionManager
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.jobrunr.jobs.lambdas.JobRequest
 import org.jobrunr.jobs.lambdas.JobRequestHandler
-import org.jobrunr.scheduling.BackgroundJob
 import org.jobrunr.scheduling.BackgroundJobRequest
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -32,8 +32,10 @@ class HelloWorld {
     @Timed("hello")
     fun helloWorld(): String {
         val id = UUID.randomUUID()
-        val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
-
-        return "Hello, ${jobId}!"
+        transaction {
+            val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
+            TransactionManager.current().commit()
+        }
+        return "Hello, ${id}!"
     }
 }
