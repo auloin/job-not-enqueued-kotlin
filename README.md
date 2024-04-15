@@ -1,4 +1,4 @@
-The issue is that jobs are not saved when using Spring without `@Transactional` and with `autoCommit=false`.
+The issue is that jobs are not saved when using Spring without `@Transactional` and with `autoCommit=false`. Issue is fix in v7.
 
 To reproduce the bug set the following in `application.properties`
 
