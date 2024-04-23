@@ -38,4 +38,15 @@ class HelloWorld {
         }
         return "Hello, ${id}!"
     }
+
+    @GetMapping("/rollback")
+    @Timed("hello-rollback")
+    fun helloWorldRollback(): String {
+        val id = UUID.randomUUID()
+        transaction {
+            val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
+            TransactionManager.current().rollback()
+        }
+        return "Hello, ${id}!"
+    }
 }
