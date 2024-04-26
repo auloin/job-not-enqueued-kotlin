@@ -16,11 +16,6 @@ import java.net.URI
 
 @Configuration
 class MyConfig {
-    @Bean(name=["connectionProvider"])
-    fun connectionProvider(): ConnectionProvider {
-        return ExposedTransactionAwareConnectionProvider()
-    }
-
     @Bean
     fun jobEnqueuedMessagePublisher(storageProvider: StorageProvider?): JobEnqueuedMessagePublisher {
         val multicastMessagePublisher = MulticastMessagePublisher(StringUtils.toURI("udp://239.076.159.181:8379"))

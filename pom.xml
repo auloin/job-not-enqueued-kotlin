@@ -83,7 +83,7 @@
         </dependency>
         <dependency>
             <groupId>org.jobrunr</groupId>
-            <artifactId>jobrunr-pro-kotlin-exposed-support</artifactId>
+            <artifactId>jobrunr-kotlin-1.9-support</artifactId>
             <version>${jobrunr.version}</version>
         </dependency>
     </dependencies>
