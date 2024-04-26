@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration
     exclude = [DataSourceTransactionManagerAutoConfiguration::class]
 )
 class MyConfig {
-    @Bean(name=["connectionProvider"])
-    fun connectionProvider(): ConnectionProvider {
-        return ExposedTransactionAwareConnectionProvider()
-    }
+//    @Bean(name=["connectionProvider"])
+//    fun connectionProvider(): ConnectionProvider {
+//        return ExposedTransactionAwareConnectionProvider()
+//    }
 }
