@@ -7,6 +7,7 @@ import org.jobrunr.jobs.lambdas.JobRequest
 import org.jobrunr.jobs.lambdas.JobRequestHandler
 import org.jobrunr.scheduling.BackgroundJobRequest
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -27,15 +28,14 @@ class MyJobRequest(val id: UUID): JobRequest {
 
 @RestController
 @RequestMapping("/hello")
+@Transactional
 class HelloWorld {
     @GetMapping
     @Timed("hello")
     fun helloWorld(): String {
         val id = UUID.randomUUID()
-        transaction {
-            val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
-            TransactionManager.current().commit()
-        }
+        val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
+
         return "Hello, ${id}!"
     }
 
@@ -43,10 +43,8 @@ class HelloWorld {
     @Timed("hello-rollback")
     fun helloWorldRollback(): String {
         val id = UUID.randomUUID()
-        transaction {
-            val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
-            TransactionManager.current().rollback()
-        }
+        val jobId = BackgroundJobRequest.enqueue(MyJobRequest(id))
+        TransactionManager.current().rollback()
         return "Hello, ${id}!"
     }
 }
